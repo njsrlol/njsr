@@ -1,0 +1,18 @@
+package Today;
+
+import javafx.scene.control.Label;
+
+public class TodayEvent {
+	public void LabelEvent(Label lbl, double scale) {
+		lbl.setOnMouseEntered(e->{
+			lbl.setScaleX(scale);
+			lbl.setScaleY(scale);
+		});
+		
+		lbl.setOnMouseExited(e->{
+			lbl.setScaleX(1);
+			lbl.setScaleY(1);
+		});
+	}
+
+}
