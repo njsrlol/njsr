@@ -1,0 +1,48 @@
+package Today;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+public class TodayMain extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		TodayLabel tl = new TodayLabel();
+		TodayContainer container = new TodayContainer();
+		TodayEvent event = new TodayEvent();
+		List<Label> lstLabel = new ArrayList<Label>();
+		List<HBox> lstHbox = new ArrayList<HBox>();
+
+		lstLabel.add(tl.getLabel("Search", "/img/search.png/", "Arial", 25, "#0076a3"));
+		lstLabel.add(tl.getLabel("Values", "Arial", 35, 270, 60));
+		lstLabel.add(tl.getLabel("A label that needs to be wrapped", true));
+		lstHbox.add(container.getHBox(40, 100, 100, lstLabel.get(2)));
+
+		for(int i=0; i<lstLabel.size(); i++)
+			event.LabelEvent(lstLabel.get(i), 1.5);
+
+
+
+
+		lstHbox.add(container.getHBox(10));
+		for(int i=0; i<lstLabel.size()-1; i++) {
+			lstHbox.get(1).getChildren().add(lstLabel.get(i));
+		}
+		lstHbox.get(1).getChildren().add(lstHbox.get(0));
+
+
+		primaryStage.setScene(new Scene(lstHbox.get(1), 400, 170));
+		primaryStage.setTitle("Practice");
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
